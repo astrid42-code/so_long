@@ -6,13 +6,13 @@
 #    By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/06 18:03:15 by astridgault      ###   ########.fr        #
+#    Updated: 2021/06/06 19:55:56 by astridgault      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-SRCS	=	main.c ft_utils.c ft_error.c 
+SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c 
 
 PATH_SRCS = ./srcs/
 

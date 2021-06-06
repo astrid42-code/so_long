@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 18:02:55 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/06 19:58:22 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
+
+// protos gnl
+int		get_next_line(int fd, char **line);
+char	*ft_get_static(char *str, char buf[BUF_SIZE], int len);
+char	*ft_stock_line(char *str, char **line);
 
 // protos error
 int		ft_checkbasic_error(int ac, char **av);
