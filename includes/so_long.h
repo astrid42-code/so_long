@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 19:58:22 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/06 20:05:50 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct	s_param
 {
 	int i;
 	char *file;
+	char **map;
+	int size_x; // taille ligne
+	int size_y; // taille colonne
 }				t_param;
 
 // protos
@@ -45,6 +48,9 @@ char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
+
+// protos free
+void	ft_free_map(t_param *param);
 
 // protos gnl
 int		get_next_line(int fd, char **line);
