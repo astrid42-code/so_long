@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 18:06:24 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 20:13:02 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		main(int ac, char **av)
 	}
 	ft_init_struct(&param);
 	param.file = ft_strdup(av[1]);
+	ft_read_data(fd, &param);
     //ft_stock(fd, &param);
 	//printf("res_data = %d\n", res_data);
 	//ft_start_game(&param); //ou if ft_start_game == 0 pour le return error?

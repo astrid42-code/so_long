@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:57:10 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 19:57:34 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 20:01:33 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,29 @@ int		get_next_line(int fd, char **line)
 	if (!str)
 		return (0);
 	return (1);
+}
+
+char    **ft_get_file(int fd, int lvl)
+{
+    char *line;
+    char **tab; 
+    
+	line = NULL;
+    if (get_next_line(fd, &line) == 1)
+    {    tab = ft_get_file(fd, lvl + 1);
+		//printf("lvl = %d\n", lvl);
+	}
+    else
+    {
+        tab = malloc(sizeof(char*) * (lvl + 2));
+	//	line = NULL;
+	    tab[lvl + 1] = NULL; //cree un invalid read!
+		//tab[lvl] = line;
+        //free(line);
+		//printf("%d - %s\n", lvl + 1, line);
+    //    return (tab);
+    }
+	//printf("%d - %s\n", lvl, line);
+    tab[lvl] = line;
+    return (tab);
 }

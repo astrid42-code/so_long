@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:33:33 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 18:02:48 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 20:10:15 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,52 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*copy_s;
+
+	i = 0;
+	copy_s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!copy_s)
+		return (NULL);
+	while (s1[i])
+	{
+		copy_s[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		copy_s[i] = s2[j];
+		i++;
+		j++;
+	}
+	copy_s[i] = '\0';
+	return (copy_s);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	char	*copy_s;
+
+	i = 0;
+	j = 0;
+	copy_s = malloc(sizeof(char) * (len + 1));
+	if (!copy_s)
+		return (NULL);
+	while (s[i])
+	{
+		if (i >= start && j < len)
+			copy_s[j++] = s[i];
+		i++;
+	}
+	copy_s[j] = '\0';
+	return (copy_s);
 }
