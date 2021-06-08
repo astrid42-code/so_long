@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 20:12:44 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 21:44:47 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct	s_param
 // protos
 int		main(int ac, char **av);
 int		ft_read_data(int fd, t_param *param);
+int		ft_stock_data(char	**data, t_param *param);
+int		ft_check_data(char **data, int count);
 
 // protos utils
 char	*ft_strchr(const char *s, int c);
@@ -64,5 +66,6 @@ char    **ft_get_file(int fd, int lvl);
 // protos error
 int		ft_checkbasic_error(int ac, char **av);
 void	ft_basic_error(int ac);
+void	ft_error_map(int error);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 20:08:20 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 21:50:58 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int		ft_read_data(int fd, t_param *param)
 	//char	*line;
 	char	**data;
     int     i;
+	int		count;
 
+	count = 0;
 	printf("Opening map\n");
 	fd = open(param->file, O_RDONLY);
 	if (fd < 0)
@@ -44,16 +46,23 @@ int		ft_read_data(int fd, t_param *param)
 		return (1);
 	}
 	printf("Reading map\n");
-	data = ft_get_file(fd, 0);
-	//printf("data = %s\n", *data);
 	i = 0;
-	while (data[i])
+	data = ft_get_file(fd, 0);
+	//printf("map = %s\n", param->map[i]);
+/*	while (data[i])
 	{
 		printf("%d - %s\n", i, data[i]);
 		i++;
 	}
-	printf("%d - %s\n", i, data[i]);
-	//ft_stock_data(line, param);
+*/	while (data[i])
+		i++;
+	if (ft_check_data(data, i) == 1)
+	{
+		//ft_free(data);
+		return (0);
+	}
+	//printf("count = %d\n", count);
+	//ft_stock_data(data, param);
 	//free(line);
 	close (fd);
 	//if (ft_check_data(param) == 0)
@@ -68,9 +77,60 @@ int		ft_read_data(int fd, t_param *param)
 
 //verifier que la taille de chaque ligne est égale à size_x
 /*
-int		ft_stock_data(char	*line, t_param *param)
+int		ft_stock_data(char	**data, t_param *param)
 {
+	int i;
+	int j;
 
+	i = 0;
+	while (data[i])
+	{
+		j = 0;
+		while (data[i][j])
+		{
+			param->map[i][j] = data[i][j];
+			j++;
+		}
+		i++;
+	printf("data = %s\n", data[i]);
+	}
+	i = 0;
+	while (param)
+	{
+		printf("%d - %s\n", i, param->map[i]);
+		i++;
+	}
+	printf("%d - %s\n", i, data[i]);
 	return (1);
 }
 */
+
+int	ft_check_data(char **data, int count)
+{
+	int i;
+	int j;
+
+	i = 0;
+	// check 1ere et derniere ligne:
+	while (i < count)
+	{
+		j = 0;
+		if (i == 0 || i == count - 1)
+		{
+			printf("data[%i] = %s\n", i, data[i]);
+			while (data[i][j])
+			{
+				if (data[i][j] != '1')
+				{
+					ft_error_map(1);
+					return (1);
+				}
+				j++;
+			}
+		}
+		i++;
+	}
+	// check rectangle :
+	
+	return (0);
+}

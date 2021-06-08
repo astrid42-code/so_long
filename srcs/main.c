@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 20:13:02 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 20:26:01 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int		main(int ac, char **av)
 {
 	int			fd;
 	t_param		param;
+	int i;
 
 	fd = 0;
+	i = 0;
 	if (ft_checkbasic_error(ac, av) == 1)
 		return (1);
 	else
@@ -69,6 +71,7 @@ int		main(int ac, char **av)
 		}
 	}
 	ft_init_struct(&param);
+	//printf("map = %s\n", param.map[i]);
 	param.file = ft_strdup(av[1]);
 	ft_read_data(fd, &param);
     //ft_stock(fd, &param);
