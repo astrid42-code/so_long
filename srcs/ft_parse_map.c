@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 21:50:58 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 22:31:40 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_read_data(int fd, t_param *param)
 	}
 */	while (data[i])
 		i++;
-	if (ft_check_data(data, i) == 1)
+	if (ft_check_data(data, i, param) == 1)
 	{
 		//ft_free(data);
 		return (0);
@@ -105,7 +105,7 @@ int		ft_stock_data(char	**data, t_param *param)
 }
 */
 
-int	ft_check_data(char **data, int count)
+int	ft_check_data(char **data, int count, t_param *param)
 {
 	int i;
 	int j;
@@ -117,7 +117,6 @@ int	ft_check_data(char **data, int count)
 		j = 0;
 		if (i == 0 || i == count - 1)
 		{
-			printf("data[%i] = %s\n", i, data[i]);
 			while (data[i][j])
 			{
 				if (data[i][j] != '1')
@@ -130,7 +129,26 @@ int	ft_check_data(char **data, int count)
 		}
 		i++;
 	}
-	// check rectangle :
+	// check char à faire avant rectangle (pour verifier qu'il n'y a pas d'espace):
 	
+	// check rectangle :
+	while (data[0][j])
+		j++;
+	param->size = j;
+	i = 1;
+	while (i < count)
+	{
+			printf("data[%i] = %s\n", i, data[i]);
+		j = 0;
+		while (data[i][j])
+			j++;
+		printf("j = %d  size = %d\n", j, param->size);
+		if (j != param->size)
+		{
+			ft_error_map(1);
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }

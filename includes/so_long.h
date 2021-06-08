@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 21:44:47 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/08 22:25:51 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@
 typedef struct	s_param
 {
 	int i;
+	int size;
 	char *file;
-	char **map;
+	//char **map;
 	int size_x; // taille ligne
 	int size_y; // taille colonne
 }				t_param;
@@ -44,7 +45,7 @@ typedef struct	s_param
 int		main(int ac, char **av);
 int		ft_read_data(int fd, t_param *param);
 int		ft_stock_data(char	**data, t_param *param);
-int		ft_check_data(char **data, int count);
+int		ft_check_data(char **data, int count, t_param *param);
 
 // protos utils
 char	*ft_strchr(const char *s, int c);
