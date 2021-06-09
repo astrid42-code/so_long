@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:59:09 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 20:03:53 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/09 16:05:54 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free_map(t_param *param)
 
 	i = 0;
 	//printf("par-i = %d\n", param->i);
-	while (i <= param->i)
+	while (param->map[i])
 	{
 		//printf("data[%d]-> %s->%p\n", i, param->map[i], param->map[i]);
 		free(param->map[i]);
@@ -28,4 +28,22 @@ void	ft_free_map(t_param *param)
 	}
 	//printf("i = %d\n", i);
 	free(param->map);
+}
+
+void	ft_free(char **data)
+{
+	int i;
+
+	i = 0;
+	//printf("par-i = %d\n", param->i);
+	while (data[i])
+	{
+		//printf("data[%d]-> %s->%p\n", i, param->map[i], param->map[i]);
+		free(data[i]);
+		data[i] = NULL;
+		i++;
+		//printf("i = %d\n", i);
+	}
+	//printf("i = %d\n", i);
+	free(data);
 }

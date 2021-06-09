@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+         #
+#    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/08 20:08:59 by astridgault      ###   ########.fr        #
+#    Updated: 2021/06/09 14:09:29 by asgaulti@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c ft_gnl.c
+SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c ft_gnl.c ft_free.c 
 
 PATH_SRCS = ./srcs/
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 20:26:01 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/09 16:05:06 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ int		main(int ac, char **av)
 	i = 0;
 	if (ft_checkbasic_error(ac, av) == 1)
 		return (1);
-	else
+	else // a retirer car doublon avec parse_map?
 	{
+		//printf("file = %s\n", av[1]);
 		fd = open(av[1], O_RDONLY);
+		//printf("fd = %d\n", fd);
 		if (fd < 0)
 		{
 			printf("Error\n");
@@ -78,7 +80,7 @@ int		main(int ac, char **av)
 	//printf("res_data = %d\n", res_data);
 	//ft_start_game(&param); //ou if ft_start_game == 0 pour le return error?
 	//ft_free_param(&param); // a mettre dans la fct exit finale (free les params, la minilibx, ...)
-	//ft_free_map(&param);	
+	ft_free_map(&param);	
 	free(param.file);
 	puts("GG");
 	return (0);

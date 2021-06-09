@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 22:25:51 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/09 15:22:06 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct	s_param
 {
 	int i;
 	int size;
+	int p;
+	int c;
+	int e;
 	char *file;
 	char **map;
 	int size_x; // taille ligne
@@ -44,8 +47,9 @@ typedef struct	s_param
 // protos
 int		main(int ac, char **av);
 int		ft_read_data(int fd, t_param *param);
-int		ft_stock_data(char	**data, t_param *param);
-int		ft_check_data(char **data, int count, t_param *param);
+int		ft_stock_data(char	**data, t_param *param, int count);
+int		ft_check_data(int count, t_param *param);
+int		ft_check_charmap(t_param *param, int count);
 
 // protos utils
 char	*ft_strchr(const char *s, int c);
@@ -57,6 +61,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 // protos free
 void	ft_free_map(t_param *param);
+void	ft_free(char **data);
 
 // protos gnl
 int		get_next_line(int fd, char **line);
