@@ -54,7 +54,8 @@ int		ft_read_data(int fd, t_param *param)
 		printf("%d - %s\n", i, data[i]);
 		i++;
 	}
-*/	while (data[i])
+*/	ft_stock_data(data, param);
+	while (data[i])
 		i++;
 	if (ft_check_data(data, i, param) == 1)
 	{
@@ -62,7 +63,6 @@ int		ft_read_data(int fd, t_param *param)
 		return (0);
 	}
 	//printf("count = %d\n", count);
-	//ft_stock_data(data, param);
 	//free(line);
 	close (fd);
 	//if (ft_check_data(param) == 0)
@@ -76,13 +76,14 @@ int		ft_read_data(int fd, t_param *param)
 //+ stocker dans size_y le nombre de colonnes (j) [inutile? juste vérifier qu il n y a pas d espaces dans la map?]
 
 //verifier que la taille de chaque ligne est égale à size_x
-/*
+
 int		ft_stock_data(char	**data, t_param *param)
 {
 	int i;
 	int j;
 
 	i = 0;
+	// manque le malloc pour map?
 	while (data[i])
 	{
 		j = 0;
@@ -103,7 +104,7 @@ int		ft_stock_data(char	**data, t_param *param)
 	printf("%d - %s\n", i, data[i]);
 	return (1);
 }
-*/
+
 
 int	ft_check_data(char **data, int count, t_param *param)
 {

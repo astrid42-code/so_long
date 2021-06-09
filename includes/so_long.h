@@ -36,7 +36,7 @@ typedef struct	s_param
 	int i;
 	int size;
 	char *file;
-	//char **map;
+	char **map;
 	int size_x; // taille ligne
 	int size_y; // taille colonne
 }				t_param;
