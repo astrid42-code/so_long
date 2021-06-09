@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
+/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/09 15:33:03 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/09 19:57:05 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		ft_read_data(int fd, t_param *param)
 	close (fd);
 	//if (ft_check_data(param) == 0)
 	//	return (1);
+	puts("che");
 	ft_free(data);
 	return (0);
 }
