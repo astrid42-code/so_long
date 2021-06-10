@@ -6,7 +6,7 @@
 /*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/09 20:33:18 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/09 19:57:59 by astridgault      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int		main(int ac, char **av)
 	fd = 0;
 	i = 0;
 	if (ft_checkbasic_error(ac, av) == 1)
+	{
 		return (1);
+	}
 /*	else // a retirer car doublon avec parse_map?
 	{
 		//printf("file = %s\n", av[1]);
@@ -79,6 +81,7 @@ int		main(int ac, char **av)
 	{
 		if (param.map)
 			ft_free_map(&param);
+	
 		if (param.file)
 			free(param.file);
 		return (1);

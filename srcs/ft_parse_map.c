@@ -57,12 +57,12 @@ int		ft_read_data(int fd, t_param *param)
 		i++;
 	if (ft_stock_data(data, param, i) == 1)
 	{
-		//ft_free(data);
+		free(data);
 		return (1);
 	}
 	if (ft_check_data(i, param) == 1)
 	{
-		//ft_free(data);
+		free(data);
 		return (1);
 	}
 	//printf("count = %d\n", count);
@@ -70,8 +70,8 @@ int		ft_read_data(int fd, t_param *param)
 	close (fd);
 	//if (ft_check_data(param) == 0)
 	//	return (1);
-	puts("che");
-	ft_free(data);
+	//ft_free(data);
+	free(data);
 	return (0);
 }
 
@@ -182,7 +182,7 @@ int		ft_check_charmap(t_param *param, int count)
 			{
 				//printf("che1\n");
 				ft_error_map(1);
-				return (0);
+				return (1);
 			}
 			if (param->map[i][j] == 'P')
 			{
@@ -191,7 +191,7 @@ int		ft_check_charmap(t_param *param, int count)
 				{
 					//printf("c = %d\n", count_letter);
 					ft_error_map(2);
-					return (0);
+					return (1);
 				}
 			}
 			if (param->map[i][j] == 'C')
@@ -205,17 +205,17 @@ int		ft_check_charmap(t_param *param, int count)
 	if (param->p < 1)
 	{
 		ft_error_map(3);
-		return (0);
+		return (1);
 	}
 	if (param->c < 1)
 	{
 		ft_error_map(4);
-		return (0);
+		return (1);
 	}
 	if (param->e < 1)
 	{
 		ft_error_map(5);
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
