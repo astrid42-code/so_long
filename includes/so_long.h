@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/10 15:49:52 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/10 16:36:02 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		main(int ac, char **av);
 int		ft_read_data(int fd, t_param *param);
 int		ft_stock_data(char	**data, t_param *param, int count);
 int		ft_check_data(int count, t_param *param);
-int		ft_check_charmap(t_param *param, int count);
+int		ft_check_charmap(int i, int j, t_param *param, int count);
 
 // protos utils
 char	*ft_strchr(const char *s, int c);
@@ -58,6 +58,11 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_check_one(int i, int count, t_param *param);
+int		ft_check_one_borders(int count, t_param *param);
+int 	ft_check_rectangle(int count, t_param *param);
+void	ft_count_c_e(int i, int j, t_param *param);
+int		ft_check_letters(t_param *param);
 
 // protos free
 void	ft_free_map(t_param *param);
