@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:59:09 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/09 16:05:54 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/10 15:50:09 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_free_map(t_param *param)
 	//printf("i = %d\n", i);
 	free(param->map);
 }
-
+/*
 void	ft_free(char **data)
 {
 	int i;
@@ -46,4 +46,12 @@ void	ft_free(char **data)
 	}
 	//printf("i = %d\n", i);
 	free(data);
+}
+*/
+void	ft_free(t_param *param)
+{
+	if (param->map)
+		ft_free_map(param);
+	if (param->file)
+		free(param->file);
 }

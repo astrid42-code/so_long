@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/09 15:22:06 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/10 15:49:52 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 // protos free
 void	ft_free_map(t_param *param);
-void	ft_free(char **data);
+void	ft_free(t_param *param);
 
 // protos gnl
 int		get_next_line(int fd, char **line);

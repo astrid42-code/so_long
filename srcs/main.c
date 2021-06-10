@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/09 19:57:59 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/10 15:49:05 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,35 +62,16 @@ int		main(int ac, char **av)
 	{
 		return (1);
 	}
-/*	else // a retirer car doublon avec parse_map?
-	{
-		//printf("file = %s\n", av[1]);
-		fd = open(av[1], O_RDONLY);
-		//printf("fd = %d\n", fd);
-		if (fd < 0)
-		{
-			printf("Error\n");
-			printf("No file\n");
-			return (1);
-		}
-	}
-*/	ft_init_struct(&param);
-	//printf("map = %s\n", param.map[i]);
+	ft_init_struct(&param);
 	param.file = ft_strdup(av[1]);
 	if (ft_read_data(fd, &param) == 1)
 	{
-		if (param.map)
-			ft_free_map(&param);
-	
-		if (param.file)
-			free(param.file);
+		ft_free(&param);
 		return (1);
 	}
-	//ft_start_game(&param); //ou if ft_start_game == 0 pour le return error?
+	//ft_start_game(&param); //ou if ft_start_game == 1 pour le return error?
 	//ft_free_param(&param); // a mettre dans la fct exit finale (free les params, la minilibx, ...)
-	ft_free_map(&param);
-	if (param.file)
-		free(param.file);
+	ft_free(&param);
 	puts("GG");
 	return (0);
 }
