@@ -13,7 +13,7 @@
 NAME	=	so_long
 
 SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c ft_gnl.c ft_free.c \
-			ft_utils_parsing.c 
+			ft_utils_parsing.c ft_start_game.c 
 
 PATH_SRCS = ./srcs/
 
@@ -35,7 +35,6 @@ MLX_LIB = ./mlx_linux/libmlx_Linux.a
 
 $(NAME):	${OBJS}
 			make -C ${MLX}
-			${CC} ${CFLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
 			${CC} ${CFLAGS} ${LFLAGS} ${OBJS} -o ${NAME} ${MLX_LIB} \
 			-L -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 

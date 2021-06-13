@@ -25,11 +25,20 @@
 # include <limits.h>
 //# include <mlx.h>
 //# include "../Libft/libft.h"
-//# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 
 # ifndef BUF_SIZE
 #  define BUF_SIZE 42
 # endif
+
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_pp; // bits per pixel
+	int		line_length;
+	int		endian;
+}				t_img;
 
 typedef struct	s_param
 {
@@ -51,7 +60,14 @@ int		ft_stock_data(char	**data, t_param *param, int count);
 int		ft_check_data(int count, t_param *param);
 int		ft_check_charmap(int i, int j, t_param *param, int count);
 
-// protos utils
+// protos jeu
+int		ft_start_game(t_param *param);
+
+// protos mlx
+void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+
+// protos utils params
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
@@ -63,6 +79,8 @@ int		ft_check_one_borders(int count, t_param *param);
 int 	ft_check_rectangle(int count, t_param *param);
 void	ft_count_c_e(int i, int j, t_param *param);
 int		ft_check_letters(t_param *param);
+
+// protos utils mlx
 
 // protos free
 void	ft_free_map(t_param *param);

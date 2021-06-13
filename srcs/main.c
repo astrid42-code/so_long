@@ -69,9 +69,9 @@ int		main(int ac, char **av)
 		ft_free(&param);
 		return (1);
 	}
-	//ft_start_game(&param); //ou if ft_start_game == 1 pour le return error?
+	ft_start_game(&param); //ou if ft_start_game == 1 pour le return error?
 	//ft_free_param(&param); // a mettre dans la fct exit finale (free les params, la minilibx, ...)
 	ft_free(&param);
-	puts("GG");
+	printf("GG\n");
 	return (0);
 }
