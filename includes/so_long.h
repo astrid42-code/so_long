@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/10 16:36:02 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/13 15:35:58 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 # include <fcntl.h>
 # include <math.h>
 # include <limits.h>
-//# include <mlx.h>
-//# include "../Libft/libft.h"
 # include "../mlx_linux/mlx.h"
 
 # ifndef BUF_SIZE
 #  define BUF_SIZE 42
 # endif
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
 
 typedef struct	s_img
 {
@@ -65,7 +68,7 @@ int		ft_start_game(t_param *param);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
-
+//int		close(int keycode, t_vars *vars);
 
 // protos utils params
 char	*ft_strchr(const char *s, int c);
@@ -81,6 +84,8 @@ void	ft_count_c_e(int i, int j, t_param *param);
 int		ft_check_letters(t_param *param);
 
 // protos utils mlx
+int		ft_keypress(int key, t_vars *mlx);
+int		ft_close(t_vars *vars);
 
 // protos free
 void	ft_free_map(t_param *param);

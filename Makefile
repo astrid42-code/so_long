@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+         #
+#    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/13 10:39:41 by astridgault      ###   ########.fr        #
+#    Updated: 2021/06/13 14:59:32 by asgaulti@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
 SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c ft_gnl.c ft_free.c \
-			ft_utils_parsing.c ft_start_game.c 
+			ft_utils_parsing.c ft_start_game.c ft_utils_mlx.c 
 
 PATH_SRCS = ./srcs/
 
