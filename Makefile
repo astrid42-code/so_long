@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
+#    By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/10 15:58:52 by asgaulti@st      ###   ########.fr        #
+#    Updated: 2021/06/13 10:39:41 by astridgault      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,39 +23,31 @@ CC		=	clang
 RM		=	rm -f
 CFLAGS	=	-Wall -Werror -Wextra
 
-#LIBFT	=	Libft
-
-#LIBFT_LIB = Libft/libft.a
-
 INCL	=	includes
 
-#LFLAGS = -L ${LIBFT}
+MLX		= ./mlx_linux
 
-#MLX		= ./mlx_linux
-
-#MLX_LIB = ./mlx_linux/libmlx_Linux.a
+MLX_LIB = ./mlx_linux/libmlx_Linux.a
 
 .c.o:
-			${CC} ${CFLAGS} -I${INCL} -g -c $< -o ${<:.c=.o}
-#${CC} ${CFLAGS} -I${LIBFT} -I${INCL} -I${MLX} -g -c $< -o ${<:.c=.o}
+			#${CC} ${CFLAGS} -I${INCL} -g -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I${INCL} -I${MLX} -g -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS}
-			#make -C ${LIBFT}
-			#make -C ${MLX}
+			make -C ${MLX}
 			${CC} ${CFLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
-			#${CC} ${CFLAGS} ${LFLAGS} ${OBJS} -o ${NAME} ${LIBFT_LIB} ${MLX_LIB} \
-			#-L -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+			${CC} ${CFLAGS} ${LFLAGS} ${OBJS} -o ${NAME} ${MLX_LIB} \
+			-L -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 all:		${NAME}
 
 clean:
 			${RM} ${OBJS}
-			#make clean -C ${LIBFT}
-			#make clean -C ${MLX}
+			make clean -C ${MLX}
 
 fclean:		clean
 			${RM} ${NAME}
-			#${RM} ${NAME} ${LIBFT_LIB} ${MLX_LIB}
+			${RM} ${NAME} ${MLX_LIB}
 					
 re:			fclean all
 
