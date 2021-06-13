@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/13 15:35:58 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/13 17:47:11 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@
 # ifndef BUF_SIZE
 #  define BUF_SIZE 42
 # endif
+
+# define RED 0xF7230C
+# define GREEN 0x3A9D23
+# define YELLOW	0xFFFF00
+# define ORANGE 0xED7F10
+# define BLUE 0x0000FF
+
+# define WIDTH 1980
+# define HIGHT 1080
+# define SIZE 10
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -56,6 +66,15 @@ typedef struct	s_param
 	int size_y; // taille colonne
 }				t_param;
 
+typedef struct	s_color
+{
+	int wall;
+	int floor;
+	int exit;
+	int collectible;
+	int player;
+}				t_color;
+
 // protos
 int		main(int ac, char **av);
 int		ft_read_data(int fd, t_param *param);
@@ -65,6 +84,7 @@ int		ft_check_charmap(int i, int j, t_param *param, int count);
 
 // protos jeu
 int		ft_start_game(t_param *param);
+int		ft_minimap(t_param *param);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
