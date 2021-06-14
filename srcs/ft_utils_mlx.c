@@ -6,13 +6,13 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/14 12:03:22 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 16:58:48 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_keypress(int key, t_vars *mlx)
+int	ft_keypress(int key, t_img *mlx)
 {
 	//printf("key = %d\n", key);
 /*	if (key = 119) // w
@@ -28,7 +28,7 @@ int	ft_keypress(int key, t_vars *mlx)
 	return (1);
 }
 
-int	ft_close(t_vars *vars)
+int	ft_close(t_img *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	// free a faire? ft_free? frees malloc pour mlx?

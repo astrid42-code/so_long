@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 17:32:44 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/14 12:00:16 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 18:38:00 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void    ft_draw_map(t_param *param/*, int wall, int floor, int exit, int collect
     t_square *square;
 
     i = 0;
+    square = NULL;
     while (param->map[i++])
     {
         j = 0;
@@ -26,7 +27,7 @@ void    ft_draw_map(t_param *param/*, int wall, int floor, int exit, int collect
         {
             if (param->map[i][j] == '1')
             {
-                ft_init_size_square(square, i, j);
+                //ft_init_size_square(square, i, j);
                 ft_draw_square(param, square, RED);
             }
         }
@@ -44,15 +45,10 @@ void    ft_draw_square(t_param *param, t_square *square, int wall)
         j = 0;
         while (j < square->size)
         {
-            my_mlx_pixel_put(param->mlx, square->x +j, square->y + i, wall);
+            //my_mlx_pixel_put(param->mlx, square->x +j, square->y + i, wall);
             j++;
         }
         i++;
     }
     
-}
-
-void    ft_init_size_square(t_square *square, int i, int j)
-{
-    *square = (t_square){j * SIZE + SIZE, i * SIZE + SIZE, SIZE};
 }

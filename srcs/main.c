@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/10 15:49:05 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 18:25:35 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		main(int ac, char **av)
 {
 	int			fd;
 	t_param		param;
+	t_solong	solong;
 	int i;
 
 	fd = 0;
@@ -69,7 +70,8 @@ int		main(int ac, char **av)
 		ft_free(&param);
 		return (1);
 	}
-	ft_start_game(&param); //ou if ft_start_game == 1 pour le return error?
+	solong.param = &param;
+	ft_start_game(&solong); //ou if ft_start_game == 1 pour le return error?
 	//ft_free_param(&param); // a mettre dans la fct exit finale (free les params, la minilibx, ...)
 	ft_free(&param);
 	printf("GG\n");
