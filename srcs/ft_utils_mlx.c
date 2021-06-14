@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/13 15:38:20 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 12:03:22 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ int	ft_close(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	// free a faire? ft_free? frees malloc pour mlx?
 	exit (0);
+}
+
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_pp / 8));
+	*(unsigned int*)dst = color;
 }

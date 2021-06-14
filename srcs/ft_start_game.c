@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/13 17:45:04 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 12:03:25 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ int ft_start_game(t_param *param)
 	return (1);
 }
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_pp / 8));
-	*(unsigned int*)dst = color;
-}
 /*
 apres avoir mis les textures et tout j'appellerai dans la fct finale le put_image_to_window
 > lance une fct 
@@ -45,6 +38,6 @@ apres avoir mis les textures et tout j'appellerai dans la fct finale le put_imag
 
 int	ft_minimap(t_param *param)
 {
-	ft_draw_map(param, 0xF7230C, 0x3A9D23, 0xFFFF00, 0xED7F10, 0x0000FF); // map, rouge (mur), vert (sol), jaune (exit), orange (collectible), bleu (joueur) > ENVOYER LES MACROS
+	ft_draw_map(param/*, 0xF7230C, 0x3A9D23, 0xFFFF00, 0xED7F10, 0x0000FF*/); // map, rouge (mur), vert (sol), jaune (exit), orange (collectible), bleu (joueur) > ENVOYER LES MACROS
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/13 17:47:11 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/14 12:04:47 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@
 # define HIGHT 1080
 # define SIZE 10
 
+typedef struct	s_square
+{
+	int x;
+	int y;
+	int size;
+}				t_square;
+
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -64,6 +71,7 @@ typedef struct	s_param
 	char **map;
 	int size_x; // taille ligne
 	int size_y; // taille colonne
+	t_vars *mlx;
 }				t_param;
 
 typedef struct	s_color
@@ -85,6 +93,8 @@ int		ft_check_charmap(int i, int j, t_param *param, int count);
 // protos jeu
 int		ft_start_game(t_param *param);
 int		ft_minimap(t_param *param);
+//void    ft_draw_map(t_param *param, int wall, int floor, int exit, int collectible, int player);
+void    ft_draw_map(t_param *param);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -106,6 +116,8 @@ int		ft_check_letters(t_param *param);
 // protos utils mlx
 int		ft_keypress(int key, t_vars *mlx);
 int		ft_close(t_vars *vars);
+void    ft_init_size_square(t_square *square, int i, int j);
+void    ft_draw_square(t_param *param, t_square *square, int wall);
 
 // protos free
 void	ft_free_map(t_param *param);
