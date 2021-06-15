@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/10 16:37:47 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/15 17:19:36 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int		ft_stock_data(char	**data, t_param *param, int count)
 		//printf("map[%d] = %s\n", i, param->map[i]);
 		i++;
 	}
+	param->size_x = i;
 	param->map[i] = NULL;
 	//printf("map[%d] = %s\n", i, param->map[i]);
 	return (0);
@@ -107,6 +108,7 @@ int	ft_check_data(int count, t_param *param)
 	while (param->map[0][j])
 		j++;
 	param->size = j;
+	param->size_y = j;
 	j = 0;
 	if (ft_check_charmap(i, j, param, count) == 1)
 		return (1);

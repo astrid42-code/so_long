@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/15 15:30:15 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/15 17:20:55 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int ft_start_game(t_solong *solong)
 {
 	t_img	img;
-	//t_vars	vars;
-    
-	//printf("r1 = %d\nr2 = %d\n", param->x, param->y);
+	int x;
+	int y;
+	
+	x = 42 * solong->param->size_y;
+	y = 42 * solong->param->size_x;
 	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, 1640, 1480, "Pingu's game");
-	img.img = mlx_new_image(img.mlx, 1640, 1480);
+	img.win = mlx_new_window(img.mlx, x, y, "Pingu's game");
+	img.img = mlx_new_image(img.mlx, x, y);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_pp, &img.line_length, &img.endian);
 	solong->img = &img;
 	mlx_hook(img.win, 2, 1L<<0, ft_keypress, &img);
@@ -61,7 +63,7 @@ int	ft_minimap(t_solong *solong)
 			ft_init_size_square(&square, i, j);
 			//printf("c = %c i = %d  j = %d\n", solong->param->map[i][j], i, j);
 			if (solong->param->map[i][j] == '1')
-				ft_draw_wall(&square, solong);
+				ft_draw_wall(&square, solong, i, j);
 			else if (solong->param->map[i][j] == '0')
 				ft_draw_floor(&square, solong);
 			else if (solong->param->map[i][j] == 'P')
@@ -80,6 +82,6 @@ int	ft_minimap(t_solong *solong)
 
 void    ft_init_size_square(t_square *square, int i, int j)
 {
-    *square = (t_square){j * SIZE + SIZE, i * SIZE + SIZE, SIZE};
+    *square = (t_square){j * SIZE , i * SIZE , SIZE};
 }
 
