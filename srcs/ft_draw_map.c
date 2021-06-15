@@ -6,49 +6,98 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 17:32:44 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/14 18:38:00 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/15 15:05:27 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void    ft_draw_map(t_param *param/*, int wall, int floor, int exit, int collectible, int player*/) // appeler macros pour couleurs
+void	ft_draw_wall(t_square *square, t_solong *solong)
 {
-    int i;
-    int j;
-    t_square *square;
-
-    i = 0;
-    square = NULL;
-    while (param->map[i++])
-    {
-        j = 0;
-        while (param->map[i][j++])
-        {
-            if (param->map[i][j] == '1')
-            {
-                //ft_init_size_square(square, i, j);
-                ft_draw_square(param, square, RED);
-            }
-        }
-    }
+	int tmp_x;
+	int tmp_y;
+	
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, square->x +tmp_x, square->y + tmp_y, RED);
+			tmp_y--;
+		}
+		tmp_x--;
+	//printf("x = %d\n", tmp_x);
+	}
 }
 
-void    ft_draw_square(t_param *param, t_square *square, int wall)
+void	ft_draw_floor(t_square *square, t_solong *solong)
 {
-    int i;
-    int j;
+	int tmp_x;
+	int tmp_y;
+	
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, GREEN);
+			tmp_y--;
+		}
+		tmp_x--;
+	}
+}
 
-    i = 0;
-    while (i < square->size)
-    {
-        j = 0;
-        while (j < square->size)
-        {
-            //my_mlx_pixel_put(param->mlx, square->x +j, square->y + i, wall);
-            j++;
-        }
-        i++;
-    }
-    
+void    ft_draw_player(t_square *square, t_solong *solong)
+{
+	int tmp_x;
+	int tmp_y;
+	
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, BLUE);
+			tmp_y--;
+		}
+		tmp_x--;
+	}
+}
+
+void    ft_draw_exit(t_square *square, t_solong *solong)
+{
+	int tmp_x;
+	int tmp_y;
+	
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, YELLOW);
+			tmp_y--;
+		}
+		tmp_x--;
+	}
+}
+
+void    ft_draw_coll(t_square *square, t_solong *solong)
+{
+	int tmp_x;
+	int tmp_y;
+	
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, ORANGE);
+			tmp_y--;
+		}
+		tmp_x--;
+	}
 }

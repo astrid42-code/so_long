@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/14 19:56:33 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/15 15:30:15 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int ft_start_game(t_solong *solong)
     
 	//printf("r1 = %d\nr2 = %d\n", param->x, param->y);
 	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, 640, 480, "Pingu's game");
-	img.img = mlx_new_image(img.mlx, 640, 480);
+	img.win = mlx_new_window(img.mlx, 1640, 1480, "Pingu's game");
+	img.img = mlx_new_image(img.mlx, 1640, 1480);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_pp, &img.line_length, &img.endian);
-	//my_mlx_pixel_put(&img, 50, 50, 0x00FF0000); // chger couleur + 5 et 5 (x et y) correspondent la position du pixel
 	solong->img = &img;
 	mlx_hook(img.win, 2, 1L<<0, ft_keypress, &img);
 	mlx_hook(img.win, 17, 1L<<17, ft_close, &img);// 17 = DestroyNotify
@@ -52,18 +51,25 @@ int	ft_minimap(t_solong *solong)
 	t_square	square;
 
 	i = 0;
-	ft_init_size_square(&square, 0, 0);
+	j = 0;
 	//printf("x = %d  y = %d\n", square.x, square.y);
 	while (solong->param->map[i])
 	{
 		j = 0;
 		while (solong->param->map[i][j])
 		{
+			ft_init_size_square(&square, i, j);
 			//printf("c = %c i = %d  j = %d\n", solong->param->map[i][j], i, j);
 			if (solong->param->map[i][j] == '1')
-				ft_draw_wall(&square, solong, i, j);
+				ft_draw_wall(&square, solong);
 			else if (solong->param->map[i][j] == '0')
-				ft_draw_floor(&square, solong, i, j);
+				ft_draw_floor(&square, solong);
+			else if (solong->param->map[i][j] == 'P')
+				ft_draw_player(&square, solong);
+			else if (solong->param->map[i][j] == 'C')
+				ft_draw_coll(&square, solong);
+			else if (solong->param->map[i][j] == 'E')
+				ft_draw_exit(&square, solong);
 			j++;
 		}
 		i++;
@@ -77,43 +83,3 @@ void    ft_init_size_square(t_square *square, int i, int j)
     *square = (t_square){j * SIZE + SIZE, i * SIZE + SIZE, SIZE};
 }
 
-void	ft_draw_wall(t_square *square, t_solong *solong, int i, int j)
-{
-	int tmp_x;
-	int tmp_y;
-	(void)i;
-	(void)j;
-	
-	tmp_x = square->x;
-	while (tmp_x != 0)
-	{
-		tmp_y = square->y;
-		while (tmp_y != 0)
-		{
-			my_mlx_pixel_put(solong->img, tmp_x, tmp_y, RED);
-			tmp_y--;
-		}
-		tmp_x--;
-	//printf("x = %d\n", tmp_x);
-	}
-}
-
-void	ft_draw_floor(t_square *square, t_solong *solong, int i, int j)
-{
-	int tmp_x;
-	int tmp_y;
-	(void)i;
-	(void)j;
-	
-	tmp_x = square->x;
-	while (tmp_x != 0)
-	{
-		tmp_y = square->y;
-		while (tmp_y != 0)
-		{
-			my_mlx_pixel_put(solong->img, tmp_x, tmp_y, GREEN);
-			tmp_y--;
-		}
-		tmp_x--;
-	}
-}

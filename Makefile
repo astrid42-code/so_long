@@ -6,14 +6,14 @@
 #    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/13 17:45:38 by asgaulti@st      ###   ########.fr        #
+#    Updated: 2021/06/15 15:03:42 by asgaulti@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
 SRCS	=	main.c ft_utils.c ft_error.c ft_parse_map.c ft_gnl.c ft_free.c \
-			ft_utils_parsing.c ft_start_game.c ft_utils_mlx.c ft_draw_map.c
+			ft_utils_parsing.c ft_start_game.c ft_utils_mlx.c ft_draw_map.c 
 
 PATH_SRCS = ./srcs/
 

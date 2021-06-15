@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/14 19:52:40 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/15 15:06:12 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 # define WIDTH 1980
 # define HIGHT 1080
-# define SIZE 10
+# define SIZE 42
 
 typedef struct	s_square
 {
@@ -119,8 +119,11 @@ int			ft_check_letters(t_param *param);
 int			ft_keypress(int key, t_img *mlx);
 int			ft_close(t_img *vars);
 void	    ft_init_size_square(t_square *square, int i, int j);
-void		ft_draw_wall(t_square *square, t_solong *solong, int i, int j);
-void		ft_draw_floor(t_square *square, t_solong *solong, int i, int j);
+void		ft_draw_wall(t_square *square, t_solong *solong);
+void		ft_draw_floor(t_square *square, t_solong *solong);
+void    	ft_draw_player(t_square *square, t_solong *solong);
+void    	ft_draw_exit(t_square *square, t_solong *solong);
+void    	ft_draw_coll(t_square *square, t_solong *solong);
 
 // protos free
 void		ft_free_map(t_param *param);
