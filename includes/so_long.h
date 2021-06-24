@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 18:21:01 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/24 19:38:03 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct	s_param
 	int p;
 	int c;
 	int e;
+	int pos_x;
+	int pos_y;
 	char *file;
 	char **map;
 	int size_x; // taille ligne
@@ -83,6 +85,7 @@ typedef struct s_solong
 {
 	t_param	*param;
 	t_img	*img;
+	t_square *square;
 }				t_solong;
 
 // protos
@@ -97,6 +100,7 @@ int		ft_start_game(t_solong *solong);
 int		ft_minimap(t_solong *solong);
 //void    ft_draw_map(t_param *param, int wall, int floor, int exit, int collectible, int player);
 void    ft_draw_map(t_param *param);
+void	ft_up(t_solong *solong);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
