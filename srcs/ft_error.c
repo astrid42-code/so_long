@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:39:25 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/06 20:01:49 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/24 11:32:30 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	ft_basic_error(int argc)
 {

@@ -6,11 +6,11 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:28:40 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/15 17:16:30 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/24 11:30:36 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 int	ft_checkbasic_error(int ac, char **av)
 {
@@ -56,7 +56,7 @@ int		main(int ac, char **av)
 	t_param		param;
 	t_solong	solong;
 	int i;
-	int j;
+	//int j;
 
 	fd = 0;
 	i = 0;

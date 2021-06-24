@@ -6,11 +6,11 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:54:39 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/10 16:37:12 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/24 11:33:03 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 int ft_check_one(int i, int count, t_param *param)
 {

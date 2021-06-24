@@ -6,11 +6,11 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/15 17:19:36 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/24 11:32:47 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 
 

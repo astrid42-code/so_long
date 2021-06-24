@@ -6,7 +6,7 @@
 #    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/15 15:03:42 by asgaulti@st      ###   ########.fr        #
+#    Updated: 2021/06/22 13:49:37 by asgaulti@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ PATH_SRCS = ./srcs/
 
 OBJS	=	${addprefix ${PATH_SRCS}, ${SRCS:.c=.o}}
 
-CC		=	clang
+CC		=	clang-9
 RM		=	rm -f
 #CFLAGS	=	-Wall -Werror -Wextra
 CFLAGS	=	-Wall -Wextra

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:33:33 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/08 20:10:15 by astridgault      ###   ########.fr       */
+/*   Updated: 2021/06/24 11:33:08 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 char	*ft_strchr(const char *s, int c)
 {
