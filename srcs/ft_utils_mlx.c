@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/24 19:41:27 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/25 16:02:06 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_keypress(int key, t_solong *solong)
 {
-	printf("key = %d\n", key);
+	//printf("key = %d\n", key);
 	if (key == 119) // w
 		ft_up(solong);
-/*	else if (key == 97) // a
-		ft_left(solong);
+	else if (key == 97) // a
+		ft_right(solong);
 	else if (key == 115) // s
-		ft__right(solong);
-	else if (key == 100) // d
 		ft_down(solong);
-*/	else if (key == 65307) // esc
-	{	//ft_close(img);
+	else if (key == 100) // d
+		ft_left(solong);
+	else if (key == 65307) // esc
+	{
 		ft_close(solong);
 	}
 	return (1);

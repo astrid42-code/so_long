@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/24 19:29:45 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/25 15:27:56 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_minimap(t_solong *solong)
 {
 	int 		i;
 	int 		j;
-	//t_square	square;
 
 	i = 0;
 	j = 0;
@@ -63,7 +62,6 @@ int	ft_minimap(t_solong *solong)
 		j = 0;
 		while (solong->param->map[i][j])
 		{
-			//ft_init_size_square(&square, i, j);
 			ft_init_size_square(solong->square, i, j);
 			if (solong->param->map[i][j] == '1')
 				ft_draw_wall(solong->square, solong);
