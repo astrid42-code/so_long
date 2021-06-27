@@ -7,11 +7,12 @@ void ft_up(t_solong *solong)
 
 	i = solong->param->pos_x;
 	j = solong->param->pos_y;
-printf("pos-e = %d\n", solong->param->pos_e);
+printf("char = %d pos-e = %d\n", solong->param->map[i - 1][j], solong->param->pos_e);
+		printf("c = %d\n", solong->param->count);
+
 	if (solong->param->map[i - 1][j] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
 	{
 		solong->param->count++;
-		printf("%d\n", solong->param->count);
 		ft_close(solong);
 	}
 	else if (solong->param->map[i - 1][j] == 'E' && solong->param->c != 0) // sf s'il n'a pas tout recolte
@@ -62,12 +63,21 @@ void	ft_down(t_solong *solong)
 
 	i = solong->param->pos_x;
 	j = solong->param->pos_y;
-	printf("pos-e = %d\n", solong->param->pos_e);
+	printf("char = %d pos-e = %d\n", solong->param->map[i + 1][j], solong->param->pos_e);
+		printf("c = %d\n", solong->param->count);
 	if (solong->param->map[i + 1][j] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
 	{
 		solong->param->count++;
-		printf("%d\n", solong->param->count);
 		ft_close(solong);
+	}
+	else if (solong->param->map[i + 1][j] == 'E' && solong->param->c != 0) // sf s'il n'a pas tout recolte
+	{
+		solong->param->pos_e = -1;
+		solong->param->map[i][j] = '0';
+		i++;
+		solong->param->pos_x = i;
+		solong->param->map[i][j] = 'P';
+		ft_minimap(solong);
 	}
 	else if (solong->param->map[i + 1][j] == 'C'
 		|| solong->param->map[i + 1][j] == '0')
@@ -98,15 +108,24 @@ void	ft_right(t_solong *solong)
 
 	i = solong->param->pos_x;
 	j = solong->param->pos_y;
-	printf("pos-e = %d\n", solong->param->pos_e);
-	if (solong->param->map[i][j - 1] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
+	printf("char = %d pos-e = %d\n", solong->param->map[i][j+1], solong->param->pos_e);
+		printf("c = %d\n", solong->param->count);
+	if (solong->param->map[i][j + 1] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
 	{
 		solong->param->count++;
-		printf("%d\n", solong->param->count);
 		ft_close(solong);
 	}
-	else if (solong->param->map[i][j - 1] == 'C'
-		|| solong->param->map[i][j - 1] == '0')
+	else if (solong->param->map[i][j + 1] == 'E' && solong->param->c != 0) // sf s'il n'a pas tout recolte
+	{
+		solong->param->pos_e = -1;
+		solong->param->map[i][j] = '0';
+		j--;
+		solong->param->pos_y = j;
+		solong->param->map[i][j] = 'P';
+		ft_minimap(solong);
+	}
+	else if (solong->param->map[i][j + 1] == 'C'
+		|| solong->param->map[i][j + 1] == '0')
 	{
 		if (solong->param->pos_e == -1)
 		{
@@ -116,9 +135,9 @@ void	ft_right(t_solong *solong)
 		else
 			solong->param->map[i][j] = '0';
 		j--;
-		solong->param->pos_x = i;
+		solong->param->pos_y = j;
 		solong->param->map[i][j] = 'P';
-		if (solong->param->map[i][j - 1] == 'C')
+		if (solong->param->map[i][j + 1] == 'C')
 			solong->param->c--;
 		ft_minimap(solong);
 	}
@@ -134,15 +153,24 @@ void	ft_left(t_solong *solong)
 
 	i = solong->param->pos_x;
 	j = solong->param->pos_y;
-	printf("pos-e = %d\n", solong->param->pos_e);
-	if (solong->param->map[i][j + 1] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
+	printf("char = %d pos-e = %d\n", solong->param->map[i][j-1], solong->param->pos_e);
+		printf("c = %d\n", solong->param->count);
+	if (solong->param->map[i][j - 1] == 'E' && solong->param->c == 0) // sf s'il n'a pas tout recolte
 	{
 		solong->param->count++;
-		printf("%d\n", solong->param->count);
 		ft_close(solong);
 	}
-	else if (solong->param->map[i][j + 1] == 'C'
-		|| solong->param->map[i][j + 1] == '0')
+	else if (solong->param->map[i][j - 1] == 'E' && solong->param->c != 0) // sf s'il n'a pas tout recolte
+	{
+		solong->param->pos_e = -1;
+		solong->param->map[i][j] = '0';
+		j--;
+		solong->param->pos_y = j;
+		solong->param->map[i][j] = 'P';
+		ft_minimap(solong);
+	}
+	else if (solong->param->map[i][j - 1] == 'C'
+		|| solong->param->map[i][j - 1] == '0')
 	{
 		if (solong->param->pos_e == -1)
 		{
@@ -154,7 +182,7 @@ void	ft_left(t_solong *solong)
 		j++;
 		solong->param->pos_x = i;
 		solong->param->map[i][j] = 'P';
-		if (solong->param->map[i][j + 1] == 'C')
+		if (solong->param->map[i][j - 1] == 'C')
 			solong->param->c--;
 		ft_minimap(solong);
 	solong->param->count++;
