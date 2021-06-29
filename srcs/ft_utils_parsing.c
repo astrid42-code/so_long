@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:54:39 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/24 11:33:03 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/29 17:57:08 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,11 @@ void	ft_count_c_e(int i, int j, t_param *param)
 	if ( param->map[i][j] == 'E')
 		param->e++;
 	if (param->map[i][j] == 'P')
+	{
+		param->pos_x = i;
+		param->pos_y = j;
 		param->p++;
+	}
 }
 
 int	ft_check_letters(t_param *param)

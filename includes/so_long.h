@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/25 17:16:33 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/29 19:45:12 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define YELLOW	0xFFFF00
 # define ORANGE 0xED7F10
 # define BLUE 0x0000FF
+# define BLACK 0x000000
 
 # define WIDTH 1980
 # define HIGHT 1080
@@ -68,6 +69,7 @@ typedef struct	s_param
 	int pos_e;
 	int pos_x;
 	int pos_y;
+	int win;
 	char *file;
 	char **map;
 	int size_x; // taille ligne
@@ -133,6 +135,7 @@ void		ft_draw_floor(t_square *square, t_solong *solong);
 void    	ft_draw_player(t_square *square, t_solong *solong);
 void    	ft_draw_exit(t_square *square, t_solong *solong);
 void    	ft_draw_coll(t_square *square, t_solong *solong);
+void		ft_win(t_solong *solong);
 
 // protos free
 void		ft_free_map(t_param *param);

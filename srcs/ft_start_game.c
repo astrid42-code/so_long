@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/25 15:27:56 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/29 17:59:26 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,14 @@ int	ft_minimap(t_solong *solong)
 			ft_init_size_square(solong->square, i, j);
 			if (solong->param->map[i][j] == '1')
 				ft_draw_wall(solong->square, solong);
-			else if (solong->param->map[i][j] == '0')
-				ft_draw_floor(solong->square, solong);
-			else if (solong->param->map[i][j] == 'P')
-			{
-				solong->param->pos_x = i;
-				solong->param->pos_y = j;
+			else if (solong->param->pos_x == i && solong->param->pos_y == j)
 				ft_draw_player(solong->square, solong);
-			}
 			else if (solong->param->map[i][j] == 'C')
 				ft_draw_coll(solong->square, solong);
 			else if (solong->param->map[i][j] == 'E')
 				ft_draw_exit(solong->square, solong);
+			else
+				ft_draw_floor(solong->square, solong);
 			j++;
 		}
 		i++;
