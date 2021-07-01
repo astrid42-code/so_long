@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/01 12:20:07 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 17:45:06 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_start_game(t_solong *solong)
 	
 	x = 42 * solong->param->size_y;
 	y = 42 * solong->param->size_x;
-	ft_get_texture(solong);
+	//ft_get_texture(solong);
 	img.mlx = mlx_init();
 	img.win = mlx_new_window(img.mlx, x, y, "Pingu's game");
 	img.img = mlx_new_image(img.mlx, x, y);
@@ -47,6 +47,7 @@ int	ft_minimap(t_solong *solong)
 
 	i = 0;
 	j = 0;
+	ft_init_size_square(solong->square, i, j);
 //	if (solong->param->win == 1)
 //		ft_win(solong);
 //	else

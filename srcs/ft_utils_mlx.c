@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/30 16:27:09 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 18:21:35 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,32 @@
 
 int	ft_keypress(int key, t_solong *solong)
 {
+	int i;
+	int j;
+	
+	i = solong->param->pos_x;
+	j = solong->param->pos_y;
 	//printf("key = %d\n", key);
 	if (key == 119) // w
-		ft_up(solong);
-	else if (key == 97) // a
-		ft_left(solong);
+	{	
+		i = solong->param->pos_x - 1;
+		ft_actions(solong, i, j);
+	}
 	else if (key == 115) // s
-		ft_down(solong);
+	{
+		i = solong->param->pos_x + 1;
+		ft_actions(solong, i, j);
+	}
+	else if (key == 97) // a
+	{
+		j = solong->param->pos_y - 1;
+		ft_actions(solong, i, j);
+	}	
 	else if (key == 100) // d
-		ft_right(solong);
+	{
+		j = solong->param->pos_y + 1;
+		ft_actions(solong, i, j);
+	}
 	else if (key == 65307) // esc
 	{
 		ft_close(solong);
@@ -56,6 +73,28 @@ void	ft_win(t_solong *solong)
 	int tmp_x;
 	int tmp_y;
 	
+	
+	tmp_x = 42 * solong->param->size_x;
+	while (tmp_x != 0)
+	{
+		tmp_y = 42 * solong->param->size_y;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(solong->img, tmp_x, tmp_y, BLACK);
+		printf("x = %d = %d\n", tmp_x, tmp_y);
+			tmp_y--;			
+		}
+		tmp_x--;
+	}
+}
+
+{
+	int tmp_x;
+	int tmp_y;
+	
+	utiliser ft_bzero ou mlx_clear_window pour mettre img noire
+
+	
 	//solong->img->img = mlx_new_image(solong->img->mlx, 0, 0);
 	//solong->img->addr = mlx_get_data_addr(solong->img->img, &solong->img->bits_pp, &solong->img->line_length, &solong->img->endian);
 	tmp_x = 42 * solong->param->size_y;
@@ -77,3 +116,15 @@ void	ft_win(t_solong *solong)
 	printf("s = %d\n", size);
 	ft_memset(solong->img->img, 0, size);
 }*/
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char *copy_s;
+
+	copy_s = s;
+	while (n > 0)
+	{
+		*copy_s++ = '\0';
+		n--;
+	}
+}

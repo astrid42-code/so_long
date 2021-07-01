@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/07/01 12:15:43 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 18:22:40 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ int		ft_start_game(t_solong *solong);
 int		ft_minimap(t_solong *solong);
 //void    ft_draw_map(t_param *param, int wall, int floor, int exit, int collectible, int player);
 void    ft_draw_map(t_param *param);
-void	ft_up(t_solong *solong);
-void	ft_down(t_solong *solong);
-void	ft_right(t_solong *solong);
-void	ft_left(t_solong *solong);
+//void	ft_up(t_solong *solong);
+//void	ft_down(t_solong *solong);
+//void	ft_right(t_solong *solong);
+//void	ft_left(t_solong *solong);
+void	ft_actions(t_solong *solong, int i, int j);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
-//int		close(int keycode, t_vars *vars);
 
 // protos utils params
 char		*ft_strchr(const char *s, int c);
@@ -121,7 +121,8 @@ char		*ft_strdup(const char *s1);
 size_t		ft_strlen(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
-void		*ft_memset(void *b, int c, size_t len);
+void		ft_bzero(void *s, size_t n);
+char		*ft_itoa(int n);
 int			ft_check_one(int i, int count, t_param *param);
 int			ft_check_one_borders(int count, t_param *param);
 int 		ft_check_rectangle(int count, t_param *param);

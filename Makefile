@@ -6,7 +6,7 @@
 #    By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 15:48:35 by astridgault       #+#    #+#              #
-#    Updated: 2021/06/24 19:37:44 by asgaulti@st      ###   ########.fr        #
+#    Updated: 2021/07/01 15:52:49 by asgaulti@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ OBJS	=	${addprefix ${PATH_SRCS}, ${SRCS:.c=.o}}
 
 CC		=	clang-9
 RM		=	rm -f
-#CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-Wall -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
+#CFLAGS	=	-Wall -Wextra
 INCL	=	includes
 
 MLX		= ./mlx_linux

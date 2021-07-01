@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 17:32:44 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/01 12:22:25 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 15:50:11 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void    ft_draw_player(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, solong->);
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, BLUE);
 			tmp_y--;
 		}
 		tmp_x--;
@@ -101,7 +101,7 @@ void    ft_draw_coll(t_square *square, t_solong *solong)
 		tmp_x--;
 	}
 }
-
+/*
 void	ft_get_texture(t_solong *solong)
 {
 	t_texture texture;
@@ -114,4 +114,4 @@ void	ft_get_texture(t_solong *solong)
 	// associer chaque texture a son char * dans la struct
 	// solong->texture = &texture;
 	// fct verif struct : si l'un des elements de la struct est nul : erreur
-}
+}*/

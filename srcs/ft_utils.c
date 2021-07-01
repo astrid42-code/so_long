@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:33:33 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/30 14:56:58 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 17:56:06 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,52 @@ void	*ft_memset(void *b, int c, size_t len)
 		i++;
 	}
 	return ((unsigned char *)b);
+}
+
+static int	ft_len(long nb)
+{
+	int i;
+
+	i = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb *= -1;
+		i++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	return (i);
+}
+
+char		*ft_itoa(int n)
+{
+	int		len;
+	long	nb;
+	char	*tab;
+
+	nb = n;
+	len = ft_len(n);
+	tab = malloc(sizeof(char) * (len + 1));
+	if (!tab)
+		return (NULL);
+	tab[len--] = '\0';
+	if (nb == 0)
+		tab[0] = 48;
+	if (nb < 0)
+	{
+		tab[0] = '-';
+		nb *= -1;
+	}
+	while (nb > 0)
+	{
+		tab[len] = (nb % 10) + 48;
+		nb /= 10;
+		len--;
+	}
+	return (tab);
 }
