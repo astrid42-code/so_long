@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 11:32:47 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 12:18:56 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,9 @@ int		ft_read_data(int fd, t_param *param)
 		return (1);
 	}
 	//printf("count = %d\n", count);
-	//free(line);
 	close (fd);
 	//if (ft_check_data(param) == 0)
 	//	return (1);
-	//ft_free(data);
 	free(data);
 	return (0);
 }

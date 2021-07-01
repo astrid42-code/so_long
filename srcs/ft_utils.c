@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:33:33 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 11:33:08 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/30 14:56:58 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	copy_s[j] = '\0';
 	return (copy_s);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t i;
+
+	i = 0;
+	while (i < len)
+	{
+		*(unsigned char *)(b + i) = c;
+		i++;
+	}
+	return ((unsigned char *)b);
 }

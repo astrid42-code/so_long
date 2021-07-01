@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/29 19:45:12 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/01 12:15:43 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,21 @@ typedef struct	s_param
 	int size_y; // taille colonne
 }				t_param;
 
-typedef struct	s_color
+typedef struct  s_texture
 {
-	int wall;
-	int floor;
-	int exit;
-	int collectible;
-	int player;
-}				t_color;
+    char **wall;
+    char **floor;
+    char *exit;
+    char **collectible;
+    char **player;
+}               t_texture;
 
 typedef struct s_solong
 {
 	t_param	*param;
 	t_img	*img;
 	t_square *square;
+	t_texture *texture;
 }				t_solong;
 
 // protos
@@ -120,6 +121,7 @@ char		*ft_strdup(const char *s1);
 size_t		ft_strlen(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
+void		*ft_memset(void *b, int c, size_t len);
 int			ft_check_one(int i, int count, t_param *param);
 int			ft_check_one_borders(int count, t_param *param);
 int 		ft_check_rectangle(int count, t_param *param);

@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/06/29 19:49:41 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/06/30 16:27:09 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,30 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * (img->bits_pp / 8));
 	*(unsigned int*)dst = color;
 }
-
+/*
 void	ft_win(t_solong *solong)
 {
 	int tmp_x;
 	int tmp_y;
 	
-	puts("che");
-	tmp_x = SIZE;
+	//solong->img->img = mlx_new_image(solong->img->mlx, 0, 0);
+	//solong->img->addr = mlx_get_data_addr(solong->img->img, &solong->img->bits_pp, &solong->img->line_length, &solong->img->endian);
+	tmp_x = 42 * solong->param->size_y;
+	printf("x = %d\n", tmp_x);
 	while (tmp_x != 0)
 	{
-		tmp_y = SIZE;
+		tmp_y = 42 * solong->param->size_y;
+		printf("y = %d\n", tmp_y);
 		while (tmp_y != 0)
 		{
-			my_mlx_pixel_put(solong->img, solong->square->x + tmp_x, solong->square->y + tmp_y, BLACK);
+			my_mlx_pixel_put(solong->img, tmp_x, tmp_y, BLACK);
 			tmp_y--;
 		}
 		tmp_x--;
 	}
-}
+	
+	int size;
+	size = solong->param->size_x * solong->param->size_y * SIZE;
+	printf("s = %d\n", size);
+	ft_memset(solong->img->img, 0, size);
+}*/
