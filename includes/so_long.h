@@ -47,112 +47,120 @@ typedef struct	s_square
 	int size;
 }				t_square;
 
-typedef struct	s_img
+typedef struct  s_img
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_pp; // bits per pixel
-	int		line_length;
-	int		endian;
-}				t_img;
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bits_pp; // bits per pixel
+    int     line_length;
+    int     endian;
+}               t_img;
 
-typedef struct	s_param
+typedef struct  s_param
 {
-	int i;
-	int count;
-	int size;
-	int p;
-	int c;
-	int e;
-	int pos_e;
-	int pos_x;
-	int pos_y;
-	int win;
-	char *file;
-	char **map;
-	int size_x; // taille ligne
-	int size_y; // taille colonne
-}				t_param;
+    int i;
+    int count;
+    int size;
+    int p;
+    int c;
+    int e;
+    int pos_e;
+    int pos_x;
+    int pos_y;
+    int win;
+    char *file;
+    char **map;
+    int size_x; // taille ligne
+    int size_y; // taille colonne
+    t_text  *wall;
+    t_text  *floor;
+    t_text  *exit;
+    t_text  *collectible;
+    t_text  *player;
+}               t_param;
 
-typedef struct  s_texture
+typedef struct  s_text
 {
-    char **wall;
-    char **floor;
-    char *exit;
-    char **collectible;
-    char **player;
-}               t_texture;
+    int *addr;
+    void    *img;
+    int bpp;
+    int line_length;
+    int endian;
+    int width;
+    int height;
+    char    *path;
+}               t_text;
 
 typedef struct s_solong
 {
-	t_param	*param;
-	t_img	*img;
-	t_square *square;
-	t_texture *texture;
-}				t_solong;
+    t_param *param;
+    t_img   *img;
+    t_square *square;
+    t_texture *texture;
+}               t_solong;
 
 // protos
-int		main(int ac, char **av);
-int		ft_read_data(int fd, t_param *param);
-int		ft_stock_data(char	**data, t_param *param, int count);
-int		ft_check_data(int count, t_param *param);
-int		ft_check_charmap(int i, int j, t_param *param, int count);
+int     main(int ac, char **av);
+int     ft_read_data(int fd, t_param *param);
+int     ft_stock_data(char  **data, t_param *param, int count);
+int     ft_check_data(int count, t_param *param);
+int     ft_check_charmap(int i, int j, t_param *param, int count);
 
 // protos jeu
-int		ft_start_game(t_solong *solong);
-int		ft_minimap(t_solong *solong);
+int     ft_start_game(t_solong *solong);
+int     ft_minimap(t_solong *solong);
 //void    ft_draw_map(t_param *param, int wall, int floor, int exit, int collectible, int player);
 void    ft_draw_map(t_param *param);
-//void	ft_up(t_solong *solong);
-//void	ft_down(t_solong *solong);
-//void	ft_right(t_solong *solong);
-//void	ft_left(t_solong *solong);
-void	ft_actions(t_solong *solong, int i, int j);
+//void  ft_up(t_solong *solong);
+//void  ft_down(t_solong *solong);
+//void  ft_right(t_solong *solong);
+//void  ft_left(t_solong *solong);
+void    ft_actions(t_solong *solong, int i, int j);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // protos utils params
-char		*ft_strchr(const char *s, int c);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-char		*ft_strdup(const char *s1);
-size_t		ft_strlen(const char *s);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
-void		ft_bzero(void *s, size_t n);
-char		*ft_itoa(int n);
-int			ft_check_one(int i, int count, t_param *param);
-int			ft_check_one_borders(int count, t_param *param);
-int 		ft_check_rectangle(int count, t_param *param);
-void		ft_count_c_e(int i, int j, t_param *param);
-int			ft_check_letters(t_param *param);
+char        *ft_strchr(const char *s, int c);
+int         ft_strncmp(const char *s1, const char *s2, size_t n);
+char        *ft_strdup(const char *s1);
+size_t      ft_strlen(const char *s);
+char        *ft_substr(char const *s, unsigned int start, size_t len);
+char        *ft_strjoin(char const *s1, char const *s2);
+void        ft_bzero(void *s, size_t n);
+char        *ft_itoa(int n);
+int         ft_check_one(int i, int count, t_param *param);
+int         ft_check_one_borders(int count, t_param *param);
+int         ft_check_rectangle(int count, t_param *param);
+void        ft_count_c_e(int i, int j, t_param *param);
+int         ft_check_letters(t_param *param);
 
 // protos utils mlx
-int			ft_keypress(int key, t_solong *solong);
-int			ft_close(t_solong *solong);
-void	    ft_init_size_square(t_square *square, int i, int j);
-void		ft_draw_wall(t_square *square, t_solong *solong);
-void		ft_draw_floor(t_square *square, t_solong *solong);
-void    	ft_draw_player(t_square *square, t_solong *solong);
-void    	ft_draw_exit(t_square *square, t_solong *solong);
-void    	ft_draw_coll(t_square *square, t_solong *solong);
-void		ft_win(t_solong *solong);
+int         ft_keypress(int key, t_solong *solong);
+int         ft_close(t_solong *solong);
+void        ft_init_size_square(t_square *square, int i, int j);
+void        ft_draw_wall(t_square *square, t_solong *solong);
+void        ft_draw_floor(t_square *square, t_solong *solong);
+void        ft_draw_player(t_square *square, t_solong *solong);
+void        ft_draw_exit(t_square *square, t_solong *solong);
+void        ft_draw_coll(t_square *square, t_solong *solong);
+void        ft_win(t_solong *solong);
 
 // protos free
-void		ft_free_map(t_param *param);
-void		ft_free(t_param *param);
+void        ft_free_map(t_param *param);
+void        ft_free(t_param *param);
 
 // protos gnl
-int			get_next_line(int fd, char **line);
-char		*ft_get_static(char *str, char buf[BUF_SIZE], int len);
-char		*ft_stock_line(char *str, char **line);
-char    	**ft_get_file(int fd, int lvl);
+int         get_next_line(int fd, char **line);
+char        *ft_get_static(char *str, char buf[BUF_SIZE], int len);
+char        *ft_stock_line(char *str, char **line);
+char        **ft_get_file(int fd, int lvl);
 
 // protos error
-int			ft_checkbasic_error(int ac, char **av);
-void		ft_basic_error(int ac);
-void		ft_error_map(int error);
+int         ft_checkbasic_error(int ac, char **av);
+void        ft_basic_error(int ac);
+void        ft_error_map(int error);
 
 #endif
