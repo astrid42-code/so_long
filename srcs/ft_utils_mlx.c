@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/01 18:21:35 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/04 15:49:11 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,27 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_pp / 8));
 	*(unsigned int*)dst = color;
+}
+
+void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y)
+{
+	int tmp_x;
+	int tmp_y;
+	(void)x;
+	(void)y;
+
+	tmp_x = SIZE;
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != 0)
+		{
+			my_mlx_pixel_put(player->img, solong->square->x + tmp_x, solong->square->y + tmp_y, (int)solong->param->player->img);
+			tmp_y--;
+			printf("x = %d y = %d\n", tmp_x, tmp_y);
+		}
+		tmp_x--;
+	}
 }
 /*
 void	ft_win(t_solong *solong)

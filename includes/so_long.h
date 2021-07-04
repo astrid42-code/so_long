@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/07/01 18:22:40 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/04 16:21:18 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,18 @@ typedef struct  s_img
     int     endian;
 }               t_img;
 
+typedef struct  s_text
+{
+    char *addr;
+    void    *img;
+    int bpp;
+    int line_length;
+    int endian;
+    int width;
+    int height;
+    //char    *path;
+}               t_text;
+
 typedef struct  s_param
 {
     int i;
@@ -81,24 +93,12 @@ typedef struct  s_param
     t_text  *player;
 }               t_param;
 
-typedef struct  s_text
-{
-    int *addr;
-    void    *img;
-    int bpp;
-    int line_length;
-    int endian;
-    int width;
-    int height;
-    char    *path;
-}               t_text;
-
 typedef struct s_solong
 {
     t_param *param;
     t_img   *img;
     t_square *square;
-    t_texture *texture;
+    t_text *text;
 }               t_solong;
 
 // protos
@@ -121,6 +121,7 @@ void    ft_actions(t_solong *solong, int i, int j);
 
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y);
 
 // protos utils params
 char        *ft_strchr(const char *s, int c);
@@ -140,13 +141,17 @@ int         ft_check_letters(t_param *param);
 // protos utils mlx
 int         ft_keypress(int key, t_solong *solong);
 int         ft_close(t_solong *solong);
-void        ft_init_size_square(t_square *square, int i, int j);
 void        ft_draw_wall(t_square *square, t_solong *solong);
 void        ft_draw_floor(t_square *square, t_solong *solong);
 void        ft_draw_player(t_square *square, t_solong *solong);
 void        ft_draw_exit(t_square *square, t_solong *solong);
 void        ft_draw_coll(t_square *square, t_solong *solong);
 void        ft_win(t_solong *solong);
+void		ft_get_texture(t_solong *solong, int color, char *texture);
+
+// protos initialisation
+void		ft_init_size_square(t_square *square, int i, int j);
+t_text	    *ft_init_text(void);
 
 // protos free
 void        ft_free_map(t_param *param);
@@ -162,5 +167,6 @@ char        **ft_get_file(int fd, int lvl);
 int         ft_checkbasic_error(int ac, char **av);
 void        ft_basic_error(int ac);
 void        ft_error_map(int error);
+void	    ft_error_mlx(int error);
 
 #endif

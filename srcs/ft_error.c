@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:39:25 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 11:32:30 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/03 17:15:19 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ void	ft_error_map(int error)
 		printf("There is no collectible\n");
 	if (error == 5)
 		printf("There is no exit\n");
+}
+
+void	ft_error_mlx(int error)
+{
+	printf("Error\n");
+	if (error == 1)
+		printf("A texture is missing!\n");
 }
