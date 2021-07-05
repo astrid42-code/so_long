@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:59:03 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/04 18:12:03 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/05 12:22:45 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int ft_minimap(t_solong *solong)
             i++;
         }
     }
-    mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->img->img, 0, 0);
+    //mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->img->img, 0, 0);
     count = ft_itoa(solong->param->count);
     mlx_string_put(solong->img->mlx, solong->img->win, SIZE / 2, SIZE / 2, BLACK, count);
     free(count);
@@ -118,9 +118,9 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
             //puts("che");
             ft_close(solong);
         }
-		if (ft_strncmp(texture, "mountain.xpm", 12) == 0)
+		if (ft_strncmp(texture, "wall.xpm", 8) == 0)
 		{
-			solong->param->wall->img = mlx_xpm_file_to_image(solong->img->mlx, "textures/mountain.xpm", &solong->param->wall->width, &solong->param->wall->height);			
+			solong->param->wall->img = mlx_xpm_file_to_image(solong->img->mlx, "textures/wall.xpm", &solong->param->wall->width, &solong->param->wall->height);			
             if (solong->param->wall->img == NULL)
 				ft_close(solong);
 			solong->param->wall->addr = mlx_get_data_addr(solong->param->wall->img, &solong->param->wall->bpp, &solong->param->wall->line_length, &solong->param->wall->endian);
@@ -141,9 +141,9 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
             //puts("che");
             ft_close(solong);
         }
-		if (ft_strncmp(texture, "banquise.xpm", 12) == 0)
+		if (ft_strncmp(texture, "floor.xpm", 9) == 0)
 		{
-			solong->param->floor->img = mlx_xpm_file_to_image(solong->img->mlx, "textures/banquise.xpm", &solong->param->floor->width, &solong->param->floor->height);			
+			solong->param->floor->img = mlx_xpm_file_to_image(solong->img->mlx, "textures/floor.xpm", &solong->param->floor->width, &solong->param->floor->height);			
             if (solong->param->floor->img == NULL)
 				ft_close(solong);
 			solong->param->floor->addr = mlx_get_data_addr(solong->param->floor->img, &solong->param->floor->bpp, &solong->param->floor->line_length, &solong->param->floor->endian);

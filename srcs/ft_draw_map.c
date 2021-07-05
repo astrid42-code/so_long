@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 17:32:44 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/04 18:14:08 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/05 12:22:50 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_draw_wall(t_square *square, t_solong *solong)
 	char *texture;
 	
 	tmp_x = SIZE;
-	texture = "mountain.xpm";
+	texture = "wall.xpm";
 	ft_get_texture(solong, 1, texture);
 	while (tmp_x != 0)
 	{
@@ -40,7 +40,7 @@ void	ft_draw_floor(t_square *square, t_solong *solong)
 	char *texture;
 	
 	tmp_x = SIZE;
-	texture = "banquise.xpm";
+	texture = "floor.xpm";
 	ft_get_texture(solong, 2, texture);
 	while (tmp_x != 0)
 	{
