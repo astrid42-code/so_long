@@ -122,6 +122,7 @@ void    ft_actions(t_solong *solong, int i, int j);
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y);
+int	    ft_get_pixel(t_solong *solong, int x, int y, int case);
 
 // protos utils params
 char        *ft_strchr(const char *s, int c);
@@ -130,7 +131,6 @@ char        *ft_strdup(const char *s1);
 size_t      ft_strlen(const char *s);
 char        *ft_substr(char const *s, unsigned int start, size_t len);
 char        *ft_strjoin(char const *s1, char const *s2);
-void        ft_bzero(void *s, size_t n);
 char        *ft_itoa(int n);
 int         ft_check_one(int i, int count, t_param *param);
 int         ft_check_one_borders(int count, t_param *param);
@@ -151,7 +151,7 @@ void		ft_get_texture(t_solong *solong, int color, char *texture);
 
 // protos initialisation
 void		ft_init_size_square(t_square *square, int i, int j);
-t_text	    *ft_init_text(void);
+t_text	    *ft_init_text(t_solong *solong);
 
 // protos free
 void        ft_free_map(t_param *param);

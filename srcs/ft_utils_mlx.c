@@ -88,6 +88,16 @@ void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y)
 		tmp_x--;
 	}
 }
+
+int	ft_get_pixel(t_solong *solong, int x, int y, int case)
+{
+	if (case == 2)
+	{
+		printf("img-linelength = %d\n", solong->param->floor->line_length);
+		return ((int*)(solong->img->addr + (y * solong->img->line_length + (x * solong->img->bits_pp / 8))));
+	}
+}	
+
 /*
 void	ft_win(t_solong *solong)
 {
@@ -137,15 +147,3 @@ void	ft_win(t_solong *solong)
 	printf("s = %d\n", size);
 	ft_memset(solong->img->img, 0, size);
 }*/
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char *copy_s;
-
-	copy_s = s;
-	while (n > 0)
-	{
-		*copy_s++ = '\0';
-		n--;
-	}
-}

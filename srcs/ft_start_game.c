@@ -76,7 +76,7 @@ int ft_minimap(t_solong *solong)
             i++;
         }
     }
-    //mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->img->img, 0, 0);
+    mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->img->img, 0, 0);
     count = ft_itoa(solong->param->count);
     mlx_string_put(solong->img->mlx, solong->img->win, SIZE / 2, SIZE / 2, BLACK, count);
     free(count);
@@ -88,14 +88,14 @@ void    ft_init_size_square(t_square *square, int i, int j)
     *square = (t_square){j * SIZE , i * SIZE , SIZE};
 }
 
-t_text	*ft_init_text(void)
+t_text	*ft_init_text(t_solong *solong)
 {
     t_text  *text;
 
     text = malloc(sizeof(t_text));
     if (text == NULL)
         return (NULL);
-	*text = (t_text){0, 0, 0, 0, 0, SIZE, SIZE};
+	*text = (t_text){0, 0, 0, solong->param->size_x, 0, SIZE, SIZE};
     return (text);
 }
 
@@ -110,7 +110,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
 //	solong->param->player = &text;
     if (color == 1)
 	{
-        solong->param->wall = ft_init_text();
+        solong->param->wall = ft_init_text(solong);
     //printf("a = %s w= %d h = %d\n", solong->param->floor->addr, solong->param->floor->width, solong->param->floor->height);
         if (solong->param->wall == NULL)
         {
@@ -133,7 +133,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
 	}
     if (color == 2)
 	{
-        solong->param->floor = ft_init_text();
+        solong->param->floor = ft_init_text(solong);
     //printf("a = %s w= %d h = %d\n", solong->param->floor->addr, solong->param->floor->width, solong->param->floor->height);
         if (solong->param->floor == NULL)
         {
@@ -156,7 +156,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
 	}
 	if (color == 3)
 	{
-    solong->param->player = ft_init_text();
+    solong->param->player = ft_init_text(solong);
     if (solong->param->player == NULL)
     {
         // msg erreur
@@ -177,7 +177,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
 	}
     if (color == 4)
 	{
-        solong->param->exit = ft_init_text();
+        solong->param->exit = ft_init_text(solong);
     //printf("a = %s w= %d h = %d\n", solong->param->floor->addr, solong->param->floor->width, solong->param->floor->height);
         if (solong->param->exit == NULL)
         {
@@ -200,7 +200,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
 	}
     if (color == 5)
 	{
-        solong->param->collectible = ft_init_text();
+        solong->param->collectible = ft_init_text(solong);
     //printf("a = %s w= %d h = %d\n", solong->param->floor->addr, solong->param->floor->width, solong->param->floor->height);
         if (solong->param->collectible == NULL)
         {
@@ -214,6 +214,7 @@ void    ft_get_texture(t_solong *solong, int color, char *texture)
             if (solong->param->collectible->img == NULL)
 				ft_close(solong);
 			solong->param->collectible->addr = mlx_get_data_addr(solong->param->collectible->img, &solong->param->collectible->bpp, &solong->param->collectible->line_length, &solong->param->collectible->endian);
+    printf("w = %d \n", solong->param->collectible->width);
     	}
 		else
 		{

@@ -25,7 +25,8 @@ void	ft_draw_wall(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
-			mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->wall->img, square->x, square->y);
+			ft_get_pixel(solong, tmp_x, tmp_y);
+			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->wall->img, square->x, square->y);
 			tmp_y--;
 		}
 		tmp_x--;
@@ -37,6 +38,7 @@ void	ft_draw_floor(t_square *square, t_solong *solong)
 {
 	int tmp_x;
 	int tmp_y;
+	int color;
 	char *texture;
 	
 	tmp_x = SIZE;
@@ -47,8 +49,9 @@ void	ft_draw_floor(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
-			//my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, GREEN);
-			mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->floor->img, square->x, square->y);
+			color = ft_get_pixel(solong, tmp_x, tmp_y, 2);
+			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, color);
+			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->floor->img, square->x, square->y);
 			tmp_y--;
 		}
 		tmp_x--;
@@ -69,11 +72,12 @@ void    ft_draw_player(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
+			ft_get_pixel(solong, tmp_x, tmp_y);
 			//my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, solong->param->player->addr);
 			//puts("che");
 			//printf("square x = %d square y = %d\n", square->x, square->y);
 			//my_mlx_put_pixel_to_img(solong, solong->param->player, square->x + tmp_x, square->y + tmp_y);
-			mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->player->img, square->x, square->y);
+			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->player->img, square->x, square->y);
 			tmp_y--;
 		}
 		tmp_x--;
@@ -94,7 +98,8 @@ void    ft_draw_exit(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
-			mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->exit->img, square->x, square->y);
+			ft_get_pixel(solong, tmp_x, tmp_y);
+			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->exit->img, square->x, square->y);
 			tmp_y--;
 		}
 		tmp_x--;
@@ -115,7 +120,8 @@ void    ft_draw_coll(t_square *square, t_solong *solong)
 		tmp_y = SIZE;
 		while (tmp_y != 0)
 		{
-			mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->collectible->img, square->x, square->y);
+			ft_get_pixel(solong, tmp_x, tmp_y);
+			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->collectible->img, square->x, square->y);
 			tmp_y--;
 		}
 		tmp_x--;
