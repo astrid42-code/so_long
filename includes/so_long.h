@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:48:30 by astridgault       #+#    #+#             */
-/*   Updated: 2021/07/04 16:21:18 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/24 17:23:45 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void    ft_actions(t_solong *solong, int i, int j);
 // protos mlx
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y);
-int	    ft_get_pixel(t_solong *solong, int x, int y, int case);
+int     *ft_get_pixel(t_solong *solong, int x, int y, int test);
 
 // protos utils params
 char        *ft_strchr(const char *s, int c);

@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:58:53 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/04 15:49:11 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/24 17:24:39 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,14 @@ void	my_mlx_put_pixel_to_img(t_solong *solong, t_text *player, int x, int y)
 	}
 }
 
-int	ft_get_pixel(t_solong *solong, int x, int y, int case)
+int	*ft_get_pixel(t_solong *solong, int x, int y, int test)
 {
-	if (case == 2)
+	if (test == 2)
 	{
 		printf("img-linelength = %d\n", solong->param->floor->line_length);
 		return ((int*)(solong->img->addr + (y * solong->img->line_length + (x * solong->img->bits_pp / 8))));
 	}
+	return (0);
 }	
 
 /*
