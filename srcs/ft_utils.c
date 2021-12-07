@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
+/*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:33:33 by astridgault       #+#    #+#             */
-/*   Updated: 2021/07/01 17:56:06 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/26 12:22:54 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (n == 0)
 		return (0);
@@ -65,14 +65,13 @@ char	*ft_strdup(const char *s1)
 
 size_t	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
 		i++;
 	return (i);
 }
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -98,86 +97,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	copy_s[i] = '\0';
 	return (copy_s);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	char	*copy_s;
-
-	i = 0;
-	j = 0;
-	copy_s = malloc(sizeof(char) * (len + 1));
-	if (!copy_s)
-		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && j < len)
-			copy_s[j++] = s[i];
-		i++;
-	}
-	copy_s[j] = '\0';
-	return (copy_s);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t i;
-
-	i = 0;
-	while (i < len)
-	{
-		*(unsigned char *)(b + i) = c;
-		i++;
-	}
-	return ((unsigned char *)b);
-}
-
-static int	ft_len(long nb)
-{
-	int i;
-
-	i = 0;
-	if (nb == 0)
-		return (1);
-	if (nb < 0)
-	{
-		nb *= -1;
-		i++;
-	}
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	return (i);
-}
-
-char		*ft_itoa(int n)
-{
-	int		len;
-	long	nb;
-	char	*tab;
-
-	nb = n;
-	len = ft_len(n);
-	tab = malloc(sizeof(char) * (len + 1));
-	if (!tab)
-		return (NULL);
-	tab[len--] = '\0';
-	if (nb == 0)
-		tab[0] = 48;
-	if (nb < 0)
-	{
-		tab[0] = '-';
-		nb *= -1;
-	}
-	while (nb > 0)
-	{
-		tab[len] = (nb % 10) + 48;
-		nb /= 10;
-		len--;
-	}
-	return (tab);
 }

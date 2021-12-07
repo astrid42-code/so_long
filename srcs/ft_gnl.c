@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:57:10 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 11:32:43 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/30 12:48:02 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char	*ft_stock_line(char *str, char **line)
 	return (str);
 }
 
-int		get_next_line(int fd, char **line)
+// pb de norne avec assignation de len dans le while
+int	get_next_line(int fd, char **line)
 {
 	int				len;
 	char			buf[BUF_SIZE + 1];
@@ -61,11 +62,13 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || BUF_SIZE < 1 || read(fd, buf, 0) < 0)
 		return (-1);
-	while ((len = read(fd, buf, BUF_SIZE)) > 0)
+	len = read(fd, buf, BUF_SIZE);
+	while (len > 0)
 	{
 		str = ft_get_static(str, buf, len);
 		if (ft_strchr(str, '\n'))
 			break ;
+		len = read(fd, buf, BUF_SIZE);
 	}
 	if (!str)
 	{
@@ -73,34 +76,24 @@ int		get_next_line(int fd, char **line)
 		return (0);
 	}
 	str = ft_stock_line(str, line);
-	//printf("linegnl = %s\n", *line);
-	//printf("strgnl = %s\n", str);
 	if (!str)
 		return (0);
 	return (1);
 }
 
-char    **ft_get_file(int fd, int lvl)
+char	**ft_get_file(int fd, int lvl)
 {
-    char *line;
-    char **tab; 
-    
+	char	*line;
+	char	**tab;
+
 	line = NULL;
-    if (get_next_line(fd, &line) == 1)
-    {    tab = ft_get_file(fd, lvl + 1);
-		//printf("lvl = %d\n", lvl);
+	if (get_next_line(fd, &line) == 1)
+		tab = ft_get_file(fd, lvl + 1);
+	else
+	{
+		tab = malloc(sizeof(char *) * (lvl + 2));
+		tab[lvl + 1] = NULL;
 	}
-    else
-    {
-        tab = malloc(sizeof(char*) * (lvl + 2));
-	//	line = NULL;
-	    tab[lvl + 1] = NULL; //cree un invalid read!
-		//tab[lvl] = line;
-        //free(line);
-		//printf("%d - %s\n", lvl + 1, line);
-    //    return (tab);
-    }
-	//printf("%d - %s\n", lvl, line);
-    tab[lvl] = line;
-    return (tab);
+	tab[lvl] = line;
+	return (tab);
 }

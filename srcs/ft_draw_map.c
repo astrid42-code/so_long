@@ -6,137 +6,133 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 17:32:44 by asgaulti@st       #+#    #+#             */
-/*   Updated: 2021/07/24 18:31:43 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/30 13:10:05 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	ft_draw_wall(t_square *square, t_solong *solong)
+
+void	ft_draw_wall(t_square *square, t_sl *sl)
 {
-	int tmp_x;
-	int tmp_y;
-	int *color;
-	char *texture;
-	
-	//(void)square;
+	int		tmp_x;
+	int		tmp_y;
+	int		*color;
+	char	*texture;
+
 	tmp_x = SIZE;
 	texture = "wall.xpm";
-	ft_get_texture(solong, 1, texture);
+	ft_get_texture(sl, 1, texture);
 	while (tmp_x != 0)
 	{
 		tmp_y = SIZE;
-		while (tmp_y != 0)
+		while (tmp_y != -1)
 		{
-			color = ft_get_pixel(solong, tmp_x, tmp_y, 1);
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, *color);
-			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->wall->img, square->x, square->y);
+			color = ft_get_pixel(sl, tmp_x, tmp_y, 1);
+			my_mlx_pixel_put(&sl->img, square->x + tmp_x, square->y + tmp_y,
+				*color);
 			tmp_y--;
 		}
 		tmp_x--;
-	    //printf("x = %d\n", tmp_x);
 	}
+	mlx_destroy_image(sl->img.mlx, sl->param->wall.img);
 }
 
-void	ft_draw_floor(t_square *square, t_solong *solong)
+void	ft_draw_floor(t_square *square, t_sl *sl)
 {
-	int tmp_x;
-	int tmp_y;
-	int *color;
-	char *texture;
-	
-	//(void)square;
+	int		tmp_x;
+	int		tmp_y;
+	int		*color;
+	char	*texture;
+
 	tmp_x = SIZE;
 	texture = "floor.xpm";
-	ft_get_texture(solong, 2, texture);
+	ft_get_texture(sl, 2, texture);
 	while (tmp_x != 0)
 	{
 		tmp_y = SIZE;
-		while (tmp_y != 0)
+		while (tmp_y != -1)
 		{
-			color = ft_get_pixel(solong, tmp_x, tmp_y, 2);
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, *color);
-			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->floor->img, square->x, square->y);
+			color = ft_get_pixel(sl, tmp_x, tmp_y, 2);
+			my_mlx_pixel_put(&sl->img, square->x + tmp_x, square->y + tmp_y,
+				*color);
 			tmp_y--;
 		}
 		tmp_x--;
 	}
+	mlx_destroy_image(sl->img.mlx, sl->param->floor.img);
 }
 
-void    ft_draw_player(t_square *square, t_solong *solong)
+void	ft_draw_player(t_square *square, t_sl *sl)
 {
-	int tmp_x;
-	int tmp_y;
-	int *color;
-	char *texture;
-	
-	(void)square;
+	int		tmp_x;
+	int		tmp_y;
+	int		*color;
+	char	*texture;
+
 	tmp_x = SIZE;
-	texture = "pingu1.xpm";
-	ft_get_texture(solong, 3, texture);
+	texture = "pingu.xpm";
+	ft_get_texture(sl, 3, texture);
 	while (tmp_x != 0)
 	{
 		tmp_y = SIZE;
-		while (tmp_y != 0)
+		while (tmp_y != -1)
 		{
-			color = ft_get_pixel(solong, tmp_x, tmp_y, 3);
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, *color);
-			//my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, solong->param->player->addr);
-			//puts("che");
-			//printf("square x = %d square y = %d\n", square->x, square->y);
-			//my_mlx_put_pixel_to_img(solong, solong->param->player, square->x + tmp_x, square->y + tmp_y);
-			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->player->img, square->x, square->y);
-			tmp_y--;
-		}
-		tmp_x--;
-	} 
-}
-
-void    ft_draw_exit(t_square *square, t_solong *solong)
-{
-	int tmp_x;
-	int tmp_y;
-	int *color;
-	char *texture;
-	
-	(void)square;
-	tmp_x = SIZE;
-	texture = "exit.xpm";
-	ft_get_texture(solong, 4, texture);
-	while (tmp_x != 0)
-	{
-		tmp_y = SIZE;
-		while (tmp_y != 0)
-		{
-			color = ft_get_pixel(solong, tmp_x, tmp_y, 4);
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, *color);
-			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->exit->img, square->x, square->y);
+			color = ft_get_pixel(sl, tmp_x, tmp_y, 3);
+			my_mlx_pixel_put(&sl->img, square->x + tmp_x, square->y + tmp_y,
+				*color);
 			tmp_y--;
 		}
 		tmp_x--;
 	}
+	mlx_destroy_image(sl->img.mlx, sl->param->player.img);
 }
 
-void    ft_draw_coll(t_square *square, t_solong *solong)
+void	ft_draw_exit(t_square *square, t_sl *sl)
 {
-	int tmp_x;
-	int tmp_y;
-	int *color;
-	char *texture;
-	
-	(void)square;
+	int		tmp_x;
+	int		tmp_y;
+	int		*color;
+	char	*texture;
+
 	tmp_x = SIZE;
-	texture = "fish.xpm";
-	ft_get_texture(solong, 5, texture);
+	texture = "bh.xpm";
+	ft_get_texture(sl, 4, texture);
 	while (tmp_x != 0)
 	{
 		tmp_y = SIZE;
-		while (tmp_y != 0)
+		while (tmp_y != -1)
 		{
-			color = ft_get_pixel(solong, tmp_x, tmp_y, 5);
-			my_mlx_pixel_put(solong->img, square->x + tmp_x, square->y + tmp_y, *color);
-			//mlx_put_image_to_window(solong->img->mlx, solong->img->win, solong->param->collectible->img, square->x, square->y);
+			color = ft_get_pixel(sl, tmp_x, tmp_y, 4);
+			my_mlx_pixel_put(&sl->img, square->x + tmp_x, square->y + tmp_y,
+				*color);
 			tmp_y--;
 		}
 		tmp_x--;
 	}
+	mlx_destroy_image(sl->img.mlx, sl->param->exit.img);
+}
+
+void	ft_draw_coll(t_square *square, t_sl *sl)
+{
+	int		tmp_x;
+	int		tmp_y;
+	int		*color;
+	char	*texture;
+
+	tmp_x = SIZE;
+	texture = "coll.xpm";
+	ft_get_texture(sl, 5, texture);
+	while (tmp_x != 0)
+	{
+		tmp_y = SIZE;
+		while (tmp_y != -1)
+		{
+			color = ft_get_pixel(sl, tmp_x, tmp_y, 5);
+			my_mlx_pixel_put(&sl->img, square->x + tmp_x, square->y + tmp_y,
+				*color);
+			tmp_y--;
+		}
+		tmp_x--;
+	}
+	mlx_destroy_image(sl->img.mlx, sl->param->coll.img);
 }

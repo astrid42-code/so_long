@@ -6,7 +6,7 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:59:09 by astridgault       #+#    #+#             */
-/*   Updated: 2021/06/24 11:32:37 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/30 13:30:19 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,37 @@
 
 void	ft_free_map(t_param *param)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	//printf("par-i = %d\n", param->i);
 	while (param->map[i])
 	{
-		//printf("data[%d]-> %s->%p\n", i, param->map[i], param->map[i]);
 		free(param->map[i]);
 		param->map[i] = NULL;
 		i++;
-		//printf("i = %d\n", i);
 	}
-	//printf("i = %d\n", i);
 	free(param->map);
 }
 
 void	ft_free(t_param *param)
 {
-	if (param->map)
-		ft_free_map(param);
-	if (param->file)
-		free(param->file);
+	free(param->file);
+	if (!param->map)
+		return ;
+	ft_free_map(param);
+	param->file = NULL;
+}
+
+int	ft_close(t_sl *sl)
+{
+	if (sl->img.img)
+		mlx_destroy_image(sl->img.mlx, sl->img.img);
+	if (sl->img.win)
+		mlx_destroy_window(sl->img.mlx, sl->img.win);
+	if (sl->img.mlx)
+		mlx_destroy_display(sl->img.mlx);
+	free(sl->img.mlx);
+	ft_free(sl->param);
+	exit (0);
+	return (0);
 }

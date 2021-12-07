@@ -6,54 +6,25 @@
 /*   By: asgaulti@student.42.fr <asgaulti>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 19:55:22 by astridgault       #+#    #+#             */
-/*   Updated: 2021/07/01 12:18:56 by asgaulti@st      ###   ########.fr       */
+/*   Updated: 2021/07/30 14:47:34 by asgaulti@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-
-/*
-vérifier qu il y a bien des 1 tout autour de la map
-
-vérifier qu il n y a pas : 
-    d espaces dans la map (error 1)
-    au moins un E (error 5)
-    au moins un C (error 4)
-    un joueur et un seul / le starting point (P) (error 3 et 2)
-    et uniquement des 0 et des 1 (error 1)
-
-
-free la map à la fin du main
-*/
-
-//ouvrir/lire le fichier (copié dans map.file) :
-int		ft_read_data(int fd, t_param *param)
+int	ft_read_data(int fd, t_param *param)
 {
 	char	**data;
-    int     i;
-	int		count;
+	int		i;
 
-	count = 0;
-	printf("Opening map\n");
 	fd = open(param->file, O_RDONLY);
+	if (read(fd, 0, 0) == -1)
+		ft_error_dir(param);
 	if (fd < 0)
-	{
-		printf("Error\n");
-		printf("No file\n");
-		return (1);
-	}
-	printf("Reading map\n");
+		return (write(1, "Error\nNo file\n", 14) && 1);
 	i = 0;
 	data = ft_get_file(fd, 0);
-/*	//printf("map = %s\n", param->map[i]);
 	while (data[i])
-	{
-		printf("%d - %s\n", i, data[i]);
-		i++;
-	}
-*/	while (data[i])
 		i++;
 	if (ft_stock_data(data, param, i) == 1)
 	{
@@ -65,41 +36,33 @@ int		ft_read_data(int fd, t_param *param)
 		free(data);
 		return (1);
 	}
-	//printf("count = %d\n", count);
 	close (fd);
-	//if (ft_check_data(param) == 0)
-	//	return (1);
 	free(data);
 	return (0);
 }
 
-
-
-//stocker chaque ligne au fur et à mesure 
-int		ft_stock_data(char	**data, t_param *param, int count)
+int	ft_stock_data(char	**data, t_param *param, int count)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	param->map = malloc (sizeof(char*) * (count + 1));
+	param->map = malloc (sizeof(char *) * (count + 1));
 	if (!param->map)
 		return (1);
-	while (data[i]) // ou tq i < count?
+	while (data[i])
 	{
 		param->map[i] = data[i];
-		//printf("map[%d] = %s\n", i, param->map[i]);
 		i++;
 	}
 	param->size_x = i;
 	param->map[i] = NULL;
-	//printf("map[%d] = %s\n", i, param->map[i]);
 	return (0);
 }
 
 int	ft_check_data(int count, t_param *param)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	j = 0;
@@ -118,7 +81,7 @@ int	ft_check_data(int count, t_param *param)
 	return (0);
 }
 
-int		ft_check_charmap(int i, int j,t_param *param, int count)
+int	ft_check_charmap(int i, int j, t_param *param, int count)
 {
 	while (++i < count)
 	{
@@ -126,12 +89,12 @@ int		ft_check_charmap(int i, int j,t_param *param, int count)
 		while (++j < param->size)
 		{
 			if (param->map[i][j] != '0' && param->map[i][j] != '1' &&
-			param->map[i][j] != 'C' && param->map[i][j] != 'E' && param->map[i][j] != 'P')
+			param->map[i][j] != 'C' && param->map[i][j] != 'E' &&
+			param->map[i][j] != 'P')
 			{
 				ft_error_map(1);
 				return (1);
 			}
-				
 			if (param->map[i][j] == 'C' || param->map[i][j] == 'E' ||
 					param->map[i][j] == 'P')
 				ft_count_c_e(i, j, param);
